@@ -1,0 +1,97 @@
+{% extends "layout.html"  %}
+{% block body %}
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('{{url_for('static', filename='img/home-bg.jpg')}}')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="site-heading">
+            <h1>Admin Panel</h1>
+            <span class="subheading">Manage or edit posts.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-10 mx-auto">
+  		
+<hr>
+  		<h2>Basic Actions</h2>
+  		<a href="/dashboard"><button class="button button3">Dashboard home</button></a>
+  		<a href="/logout"><button class="button button3">Logout</button></a>
+  		
+  		<hr>
+<h2>Edit Posts</h2>
+        <form name="sentMessage" id="contactForm" action="/edit/{{post.sno}}" method="post" 
+         novalidate>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Title</label>
+              <input type="text" class="form-control" placeholder="Title" 
+              name='title' id="title"  value="{{post.title}}" required data-validation-required-message="Please enter title for the blog.">
+              <p class="help-block text-danger"></p>
+            </div> 
+          </div>
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>Tagline</label>
+              <input type="text" class="form-control" placeholder="Tagline" value="{{post.tagline}}" name='tline' id="tline" required="" >
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Slug</label>
+              <input type="text" class="form-control" placeholder="Slug" value="{{post.slug}}"  
+              name = "slug" id="slug" required data-validation-required-message="Please enter the slug.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <div class="control-group">
+            <div class="form-group col-xs-12 floating-label-form-group controls">
+              <label>Image file</label>
+              <input type="text" class="form-control" placeholder="Image-file"
+               value="{{post.img_file}}"  
+              name = "img_file" id="img_file" required data-validation-required-message="Please enter image file.">
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+
+
+          <div class="control-group">
+            <div class="form-group floating-label-form-group controls">
+              <label>content</label>
+              <textarea rows="5" class="form-control" placeholder="Content"
+               name="content"  id="content" required data-validation-required-message="Please enter the content.">{{post.content}}</textarea>
+              <p class="help-block text-danger"></p>
+            </div>
+          </div>
+          <br>
+          <div id="success"></div>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="sendMessageButton">Submit</button>
+          </div>
+        </form>
+
+		
+		
+        <!-- Pager -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript -->
+  <script src='{{url_for('static', filename="vendor/jquery/jquery.min.js")}}'>
+  </script>
+  <script src='{{url_for('static', filename="vendor/bootstrap/js/bootstrap.bundle.min.js")}}'></script>
+  <!-- Custom scripts for this template -->
+  <script src='{{url_for('static', filename="js/clean-blog.min.js")}}'></script>
+</body>
+</html>
+{% endblock %}
